@@ -1,0 +1,51 @@
+<div class="container">
+    <form action="">
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Name" name="name" [(ngModel)]="user.name">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Email" name="email" [(ngModel)]="user.email">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Password" name="password" [(ngModel)]="user.password">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <mat-label>Roles</mat-label>
+                <mat-select name="role" [(ngModel)]="user.role">
+                    <mat-option *ngFor="let role of roles" [value]="role.name">{{role.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </p>
+        <button mat-raised-button color="primary" (click)="createUser()">Save</button>
+    </form>
+    <div class="mt-20">
+        <table mat-table [dataSource]="userSource" class="mat-elevation-z8" >
+            
+            <!-- Position Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            
+            <!-- Name Column -->
+            <ng-container matColumnDef="role">
+                <th mat-header-cell *matHeaderCellDef> Role </th>
+                <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>                            
+    </div>
+</div>
