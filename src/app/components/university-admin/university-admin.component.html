@@ -1,1 +1,16 @@
-<p>university-admin works!</p>
+<div>
+    <mat-tab-group>
+        <mat-tab label="Facultad">
+            <app-data-form (create)="createFacultad($event)"></app-data-form>
+            <app-data-table [data]="facultadCol" [columns]="['name']" (delete)="deleteFacultad($event)"></app-data-table>
+        </mat-tab>
+        <mat-tab label="Bloque">
+            <app-data-form (create)="createBloque($event)"></app-data-form>
+            <app-data-table [data]="bloqueCol" [columns]="['name']"></app-data-table>
+        </mat-tab>
+        <mat-tab label="Laboratorio">
+            <app-data-form (create)="createLaboratorio($event)"></app-data-form>
+            <app-data-table [data]="laboratorioCol" [columns]="['name']"></app-data-table>
+        </mat-tab>
+    </mat-tab-group>
+</div>

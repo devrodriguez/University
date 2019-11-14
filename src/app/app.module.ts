@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainMenuComponent } from './main-menu/main-menu.component';
+import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,6 +26,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 //Util
 import { environment } from 'src/environments/environment';
+import { DataFormComponent } from './components/data-form/data-form.component';
+import { DataTableComponent } from './components/data-table/data-table.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { environment } from 'src/environments/environment';
     MainMenuComponent,
     HomeComponent,
     UsersComponent,
-    UniversityAdminComponent
+    UniversityAdminComponent,
+    DataFormComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +49,7 @@ import { environment } from 'src/environments/environment';
     AngularFirestoreModule,
     AngularFireAuthModule,
     MatTableModule,
+    MatTabsModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
