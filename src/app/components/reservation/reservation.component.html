@@ -1,0 +1,29 @@
+<div class="mt-20 ml-20">
+    <mat-form-field class="mr-10">
+        <mat-label>
+            Laboratory
+        </mat-label>
+        <mat-select [(ngModel)]="laboratorySel">
+            <mat-option *ngFor="let laboratory of laboratories" [value]="laboratory">
+                {{laboratory.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="mr-10">
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="dateSel">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker ></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="reserve()">
+        <mat-icon mat-list-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+        Reserve
+    </button>
+    <mat-divider></mat-divider>
+    <mat-list class="mt-10">
+        <mat-list-item *ngFor="let reserv of reservations">
+            <mat-icon mat-list-icon>straighten</mat-icon>
+            <h4 mat-line>{{reserv.labName}}</h4>
+            <p mat-line>{{reserv.date}}</p>
+        </mat-list-item>
+    </mat-list>
+</div>

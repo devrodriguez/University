@@ -18,6 +18,7 @@ export class DataFormComponent implements OnInit {
 
   created() {
     this.create.emit(this.name);
+    this.name = '';
   }
 
 }

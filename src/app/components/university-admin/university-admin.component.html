@@ -1,16 +1,16 @@
 <div>
     <mat-tab-group>
-        <mat-tab label="Facultad">
+        <mat-tab label="Faculty">
             <app-data-form (create)="createFacultad($event)"></app-data-form>
             <app-data-table [data]="facultadCol" [columns]="['name']" (delete)="deleteFacultad($event)"></app-data-table>
         </mat-tab>
-        <mat-tab label="Bloque">
+        <mat-tab label="Block">
             <app-data-form (create)="createBloque($event)"></app-data-form>
-            <app-data-table [data]="bloqueCol" [columns]="['name']"></app-data-table>
+            <app-data-table [data]="bloqueCol" [columns]="['name']" (delete)="deleteBloque($event)"></app-data-table>
         </mat-tab>
-        <mat-tab label="Laboratorio">
+        <mat-tab label="Laboratory">
             <app-data-form (create)="createLaboratorio($event)"></app-data-form>
-            <app-data-table [data]="laboratorioCol" [columns]="['name']"></app-data-table>
+            <app-data-table [data]="laboratorioCol" [columns]="['name']" (delete)="deleteLaboratorio($event)"></app-data-table>
         </mat-tab>
     </mat-tab-group>
 </div>

@@ -17,6 +17,22 @@ html, body {
     margin-top: 20px;
 }
 
+.mr-10 {
+    margin-right: 10px;
+}
+
+.mr-20 {
+    margin-right: 20px;
+}
+
 .ml-20 {
     margin-left: 20px;
+}
+
+.t_a_r {
+    text-align: right;
+}
+
+.w100 {
+    width: 100%;
 }

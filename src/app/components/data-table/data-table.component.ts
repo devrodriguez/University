@@ -22,12 +22,16 @@ export class DataTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.displayedColumns = ['delete', ...this.columns];
+    this.displayedColumns = [...this.columns, 'delete'];
   }
 
   deleted(index, element) {
     element['index'] = index;
     this.delete.emit(element);
+  }
+
+  applyFilter(value: string) {
+    this.dataSource.filter = value.trim().toLowerCase();
   }
 
 }
