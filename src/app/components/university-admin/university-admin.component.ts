@@ -18,9 +18,9 @@ export class UniversityAdminComponent implements OnInit {
   bloque: Bloque = {} as Bloque;
   facultad: Facultad = {} as Facultad;
   laboratorio: Laboratorio = {} as Laboratorio;
-  bloqueCol: any[] = [] as any[];
-  facultadCol: any[] = [] as any[];
-  laboratorioCol: any[] = [] as any[];
+  bloqueCol: Bloque[] = [] as Bloque[];
+  facultadCol: Facultad[] = [] as Facultad[];
+  laboratorioCol: Laboratorio[] = [] as Laboratorio[];
   bloqueSource = new MatTableDataSource();
   facultadSource = new MatTableDataSource();
   laboratorioSource = new MatTableDataSource();

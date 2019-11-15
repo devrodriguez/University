@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFirestoreCollection } from '@angular/fire/firestore';
 import { User } from '../interfaces/user';
+import { Role } from '../interfaces/role';
 
 @Injectable({
   providedIn: 'root'
@@ -33,19 +34,19 @@ export class UserService {
   }
 
   getUsers() {
-    return this.afs.collection('users');
+    return this.afs.collection<User>('users');
   }
 
   async createUser(user: User) {
-    let users = this.afs.collection('users');
+    let users = this.afs.collection<User>('users');
 
     return await users.add(user);
   }
 
-  deleteUser(email: string) {
+  deleteUser(user: User) {
     let id: string;
     return new Promise((resolve, reject) => {
-      this.afs.collection('users', ref => ref.where('email', '==', email))
+      this.afs.collection('users', ref => ref.where('email', '==', user.email))
       .snapshotChanges()
       .subscribe(snapshot => {
         id = snapshot.map(res => res.payload.doc.id)[0];
@@ -59,5 +60,9 @@ export class UserService {
     let currUser = this.fireAuth.auth.currentUser;
 
     return await currUser.delete()
+  }
+
+  getRoles() {
+    return this.afs.collection<Role>('roles');
   }
 }

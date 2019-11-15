@@ -14,20 +14,14 @@ export class UsersComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'role', 'email', 'delete'];
   userSource = new MatTableDataSource();
-  userData: User[] = [];
+  userData: User[] = [] as User[];
   user: User = {} as User;
-  roles: Role[] = [
-    {
-      name: 'Admin'
-    },
-    {
-      name: 'Alumno'
-    }
-  ];
+  roles: Role[] = [] as Role[];
 
   constructor(private userService: UserService, private snack: MatSnackBar) { }
 
   ngOnInit() {
+    this.getRoles();
     this.getUsers();
   }
 
@@ -45,20 +39,36 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getUsers().valueChanges().subscribe(_users => {
+    this.userService.getUsers()
+    .valueChanges()
+    .subscribe(_users => {
       this.userSource.data = _users;
+    }, err => {
+      this.openSnack('Process failed!');
+      throw err;
     });
   }
 
-  async deleteUser(user) {
+  async deleteUser(user: User) {
     try {
-      await this.userService.deleteUser(user.email);
+      await this.userService.deleteUser(user);
       await this.userService.deleteAccount();
       this.openSnack('User deleted!');
     } catch (error) {
       this.openSnack('Process failed!');
       throw error;
     }
+  }
+
+  getRoles() {
+    this.userService.getRoles()
+    .valueChanges()
+    .subscribe(res => {
+      this.roles = res;
+    }, err => {
+      this.openSnack('Process failed!');
+      throw err;
+    });
   }
 
   applyFilter(value: string) {
